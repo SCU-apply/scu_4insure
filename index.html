@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>'4대 사회보험 가입자 가입내역 확인서' 제출 안내</title>
+<style>
+  :root {
+    /* 기존 푸른 계열을 요청하신 초록 계열(rgb(0, 161, 81)) 톤으로 변경 */
+    --primary-color: rgb(0, 161, 81);     /* 기본 학교 컬러 */
+    --dark-color: rgb(0, 112, 56);        /* 헤더 등 진한 포인트 (명도 낮춤) */
+    --light-color: rgb(235, 246, 240);    /* 배경 등 연한 포인트 */
+    --line: #dfe4ec;
+    --text: #333;
+    --sub: #666;
+    --red: #d64545;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Malgun Gothic", "맑은 고딕", -apple-system, "Apple SD Gothic Neo", sans-serif;
+    color: var(--text); 
+    line-height: 1.7; 
+    background: #f4f6f9; 
+    padding: 0;
+  }
+  .wrap { 
+    max-width: 820px; 
+    margin: 0 auto; 
+    background: #fff; 
+    min-height: 100vh;
+    box-shadow: 0 0 24px rgba(0,0,0,.05); 
+  }
+  header {
+    background: var(--dark-color); 
+    color: #fff; 
+    padding: 28px 32px;
+  }
+  header h1 { font-size: 20px; font-weight: 700; letter-spacing: -.5px; }
+  .intro {
+    background: var(--light-color); 
+    border-bottom: 1px solid var(--line);
+    padding: 20px 32px; 
+    font-size: 14px; 
+    color: var(--sub);
+  }
+  .intro a { color: var(--primary-color); text-decoration: none; font-weight: 600; }
+  .intro a:hover { text-decoration: underline; }
+  
+  section { padding: 8px 32px 4px; }
+  .sec-title {
+    display: flex; align-items: center; gap: 10px;
+    margin: 26px 0 14px; padding-bottom: 10px;
+    border-bottom: 2px solid var(--dark-color);
+  }
+  .sec-title .num {
+    background: var(--dark-color); 
+    color: #fff; 
+    font-weight: 700; font-size: 13px;
+    width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .sec-title h2 { font-size: 17px; color: var(--dark-color); font-weight: 700; }
+  ol.steps { list-style: none; counter-reset: step; }
+  ol.steps > li {
+    counter-increment: step; position: relative;
+    padding: 14px 14px 14px 52px; margin-bottom: 10px;
+    background: #f9fbfb; border: 1px solid var(--line); border-radius: 8px; /* 배경색 살짝 조절 */
+    font-size: 14.5px;
+  }
+  ol.steps > li::before {
+    content: counter(step);
+    position: absolute; left: 14px; top: 14px;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--primary-color); 
+    color: #fff; font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.steps b { color: var(--dark-color); }
+  
+  a.btn-link {
+    display: inline-block; background: var(--primary-color); color: #fff;
+    padding: 3px 12px; border-radius: 5px; font-size: 13px; text-decoration: none;
+    margin-left: 4px; font-weight: 600; vertical-align: middle;
+  }
+  a.btn-link:hover { background: var(--dark-color); }
+  .sub-list { list-style: none; margin: 10px 0 2px; padding-left: 4px; }
+  .sub-list li {
+    position: relative; padding: 3px 0 3px 22px; font-size: 13.5px; color: #444;
+  }
+  .sub-list li::before {
+    content: attr(data-n); position: absolute; left: 0; top: 3px;
+    color: var(--primary-color); font-weight: 700;
+  }
+  .note {
+    color: var(--red); font-size: 12.5px; padding-left: 22px; position: relative;
+    margin-top: 4px;
+  }
+  .note::before { content: "※"; position: absolute; left: 0; color: var(--red); }
+  .fax-box {
+    background: var(--dark-color); 
+    color: #fff; text-align: center;
+    padding: 16px; border-radius: 8px; margin: 6px 0 10px;
+  }
+  .fax-box .label { font-size: 13px; opacity: .85; }
+  .fax-box .num { font-size: 26px; font-weight: 800; letter-spacing: 2px; margin-top: 4px; }
+  footer {
+    padding: 24px 32px 40px; color: #999; font-size: 12px; text-align: center;
+    border-top: 1px solid var(--line); margin-top: 20px;
+  }
+  @media(max-width: 600px) {
+    header, .intro, section { padding-left: 18px; padding-right: 18px; }
+    header h1 { font-size: 16.5px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>‘4대 사회보험 가입자 가입내역 확인서’ 제출 안내</h1>
+  </header>
+
+  <div class="intro">
+    아래 절차에 따라 <b>4대사회보험정보연계센터</b>에서 ‘가입내역 확인서’를 발급하고,
+    <b>웹팩스(WebFax)</b>로 본교에 제출해 주시기 바랍니다.
+  </div>
+
+  <section>
+    <div class="sec-title"><span class="num">01</span><h2>제출방법</h2></div>
+    <ol class="steps">
+      <li>
+        <b>“4대사회보험정보연계센터”</b> 접속
+        <a class="btn-link" href="https://www.4insure.or.kr/pbiz/main/main.do" target="_blank" rel="noopener">바로가기</a>
+      </li>
+      <li>
+        <b>[개인 비회원 로그인]</b> 클릭 후 간편인증, 모바일 신분증 등으로 로그인
+      </li>
+      <li>
+        <b>[증명서발급] → [증명서 신청/발급]</b> 메뉴 접속
+        <ul class="sub-list">
+          <li data-n="→">개인정보제공동의 후 <b>[확인]</b> 버튼 클릭</li>
+          <li data-n="→">증명서 발급 관련 안내 사항 확인 후 <b>[확인]</b> 클릭</li>
+        </ul>
+      </li>
+      <li>
+        <b>[확인]</b> 클릭 후 이동된 “증명서 신청/발급” 페이지에서 아래 내용 확인 후 <b>[신청]</b> 버튼 클릭
+        <ul class="sub-list">
+          <li data-n="1)">가입내역확인서 청구내역 : 체크 표시 확인</li>
+          <li data-n="2)">확인자 이름 및 주민등록번호 앞자리 맞게 입력되었는지 확인</li>
+          <li data-n="3)">“근무중인 사업장”에서 <b>[명칭] – 전체사업장</b> 선택 확인</li>
+        </ul>
+        <div class="note">사업자등록번호, 사업장관리번호 입력 X</div>
+        <div class="note">용도 – 확인용, 주민등록번호 뒷자리 표시 – 아니오 선택 확인</div>
+      </li>
+      <li>
+        <b>[신청]</b> 버튼 클릭 후 이동된 페이지의 <b>[증명서 상세내역]</b> 표에서
+        <b>[처리여부]</b> 4개 모두 <b>“출력가능”</b>으로 표기되었는지 확인
+        <div class="note">[새로고침] 클릭하시면 처리여부가 갱신됩니다(일정 시간 소요)</div>
+      </li>
+      <li>
+        페이지 아래 <b>[출력]</b> 버튼 클릭 후 나온 페이지의 왼쪽 위 <b>[웹팩스]</b> 버튼 클릭
+        <div class="note">[전자증명서]는 전자지갑 전송으로, 본교는 확인할 수 없습니다</div>
+      </li>
+      <li>
+        <b>[증명서 WebFax 전송]</b> 창에 아래 팩스번호를 입력 후 <b>[보내기]</b> 클릭
+        <div class="fax-box">
+          <div class="label">WebFax 전송 팩스번호</div>
+          <div class="num">0303-3440-2345</div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="sec-title"><span class="num">02</span><h2>유의사항</h2></div>
+    <ul class="sub-list" style="padding-left:2px;">
+      <li data-n="※">‘개인 비회원 로그인’ 시 간편인증 또는 모바일 신분증이 필요합니다.</li>
+      <li data-n="※">‘전체사업장’으로 선택해야 모든 가입 이력이 포함됩니다.</li>
+      <li data-n="※">[처리여부]가 모두 <b>“출력가능”</b>으로 바뀐 후에 출력·전송해 주세요.</li>
+      <li data-n="※">반드시 <b>웹팩스(WebFax)</b>로 제출해야 하며, 전자증명서(전자지갑) 전송은 본교에서 확인할 수 없습니다.</li>
+      <li data-n="※">팩스번호(<b>0303-3440-2345</b>)를 정확히 입력했는지 확인 후 전송해 주세요.</li>
+    </ul>
+  </section>
+
+  <footer>
+    본 안내문은 ‘4대 사회보험 가입자 가입내역 확인서’ 제출을 위한 참고용입니다.
+  </footer>
+</div>
+</body>
+</html>
